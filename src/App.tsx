@@ -5,7 +5,9 @@ import "./scss/styles.scss";
 function App() {
   return (
     <CommentsProvider>
-      <CommentsComponent />
+      <main>
+        <CommentsComponent />
+      </main>
     </CommentsProvider>
   );
 }
