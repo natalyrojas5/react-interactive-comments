@@ -3,20 +3,24 @@
   max-height: 580px;
   overflow: auto;
   padding-right: 1rem;
+  & .replies {
+    border-left: 4px solid map-get($map: $colorsNeutral, $key: "light-gray");
+    margin-left: 2.5rem;
+    padding-left: 2.2rem;
+  }
 }
+
 .comment {
-  border-radius: 10px;
-  margin-bottom: 0.8rem;
+  align-items: center;
   display: grid;
   grid-template-columns: 3rem 1fr;
-  align-items: center;
-  gap: 1.4rem;
+  margin-bottom: 0.8rem;
   padding-right: 1.8rem !important;
   &-score {
     background-color: map-get($map: $colorsNeutral, $key: "very-light-gray");
     border-radius: 14px;
-    max-height: 106px;
     height: 100%;
+    max-height: 106px;
     & p {
       font-size: 1.2rem;
       font-weight: 800;
@@ -65,4 +69,42 @@
       width: 16px;
     }
   }
+
+  &-box-reply {
+    display: grid;
+    grid-template-columns: 4rem 1fr 6rem;
+    align-items: flex-start;
+    & img {
+      max-width: 60px;
+      width: 100%;
+    }
+    & textarea {
+      border-color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+      color: map-get($map: $colorsNeutral, $key: "dark-blue");
+      font-weight: 600;
+      resize: none;
+    }
+    & button {
+      background-color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+      border: 0px;
+      color: map-get($map: $colorsNeutral, $key: "white");
+      font-weight: 700;
+      outline: 0;
+      text-transform: uppercase;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+    & textarea,
+    & button {
+      outline: 0px;
+      border-radius: 6px;
+    }
+  }
+}
+
+.comment,
+.comment-box-reply {
+  border-radius: 10px;
+  gap: 1.4rem;
 }

@@ -1,6 +1,6 @@
 main {
   align-items: center;
-  background-color: map-get($map: $colorsNeutral, $key: "light-gray");
+  background-color: map-get($map: $colorsNeutral, $key: "very-light-gray");
   display: flex;
   flex-direction: column;
   justify-content: center;

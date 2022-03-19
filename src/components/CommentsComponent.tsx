@@ -3,6 +3,7 @@ import { CommentsContext } from "../context/CommentsContext";
 import { Comment, Comments } from "../interfaces/AppInterfaces";
 import { hasReplies } from "../utils/hasReplies";
 import CommentComponent from "./CommentComponent";
+import ReplyCommentComponent from "./ReplyCommentComponent";
 
 export const CommentsComponent = () => {
   const { comments } = useContext(CommentsContext);
@@ -11,14 +12,20 @@ export const CommentsComponent = () => {
     return (
       <div className="comments">
         {Children.toArray(
-          comments.map((comment: Comments) => (
+          comments.map((comment: Comments, index: number) => (
             <>
               <CommentComponent {...comment} />
+              {index === 0 && <ReplyCommentComponent btnText="Reply" />}
               {hasReplies(comment.replies) && (
-                <div className="ms-4 mt-4">
+                <div className="replies my-4">
                   {Children.toArray(
-                    comment.replies.map((c: Comment) => (
-                      <CommentComponent {...c} />
+                    comment.replies.map((c: Comment, index: number) => (
+                      <>
+                        <CommentComponent {...c} />
+                        {index === 0 && (
+                          <ReplyCommentComponent btnText="Reply" />
+                        )}
+                      </>
                     ))
                   )}
                 </div>
@@ -26,7 +33,8 @@ export const CommentsComponent = () => {
             </>
           ))
         )}
+        <ReplyCommentComponent btnText="Send" />
       </div>
     );
-  else return <>dedede</>;
+  else return <>Problems</>;
 };

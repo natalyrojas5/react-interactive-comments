@@ -17,6 +17,7 @@ const CommentComponent = ({
 }: Comment) => {
   const { user } = useContext(CommentsContext);
   const isCurrentUser = user.username === username;
+
   return (
     <div className="comment shadow-sm bg-white px-3 py-4">
       <div className="comment-score d-flex align-items-center justify-content-center flex-column gap-2 ">
