@@ -5,4 +5,8 @@ main {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  @media (max-width: 767.98px) {
+    justify-content: flex-start;
+    min-height: auto;
+  }
 }

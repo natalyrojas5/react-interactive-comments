@@ -5,6 +5,8 @@ import { Comment } from "../interfaces/AppInterfaces";
 import BtnDeleteComponent from "./BtnDeleteComponent";
 import BtnEditComponent from "./BtnEditComponent";
 import BtnReplyComponent from "./BtnReplyComponent";
+import ScoreCommentComponent from "./ScoreCommentComponent";
+import UserCommentComponent from "./UserCommentComponent";
 
 const CommentComponent = ({
   user: {
@@ -20,32 +22,23 @@ const CommentComponent = ({
 
   return (
     <div className="comment shadow-sm bg-white px-3 py-4">
-      <div className="comment-score d-flex align-items-center justify-content-center flex-column gap-2 ">
-        <p role="button" className="comment-score-action">
-          +
-        </p>
-        <p className="comment-score-num">{score}</p>
-        <p role="button" className="comment-score-action">
-          -
-        </p>
-      </div>
+      <ScoreCommentComponent score={score} username={username} />
       <div>
         <div className="d-flex justify-content-between mb-3">
-          <div className="comment-user d-flex align-items-center gap-3">
-            <img src={webp} alt={username} />
-            <p className="name fw-bold">
-              {username + " "}
-              {isCurrentUser && <span className="tag-user">you</span>}
-            </p>
-            <p className="create">{createdAt}</p>
-          </div>
+          <UserCommentComponent
+            webp={webp}
+            username={username}
+            createdAt={createdAt}
+          />
           {isCurrentUser ? (
-            <div className="d-flex align-items-center gap-3" role="button">
+            <div className="d-lg-flex align-items-center gap-3 d-none">
               <BtnDeleteComponent />
               <BtnEditComponent />
             </div>
           ) : (
-            <BtnReplyComponent />
+            <div className="d-lg-block d-none">
+              <BtnReplyComponent />
+            </div>
           )}
         </div>
         <div className="comment-user">
