@@ -1,0 +1,68 @@
+.comments {
+  max-width: 750px;
+  max-height: 580px;
+  overflow: auto;
+  padding-right: 1rem;
+}
+.comment {
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 1.8rem !important;
+  &-score {
+    background-color: map-get($map: $colorsNeutral, $key: "very-light-gray");
+    border-radius: 14px;
+    max-height: 106px;
+    height: 100%;
+    & p {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    &-action {
+      color: map-get($map: $colorsPrimary, $key: "light-grayish-blue");
+    }
+    &-num {
+      color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+    }
+  }
+  &-user {
+    & p {
+      font-size: 1.1rem;
+      color: map-get($map: $colorsNeutral, $key: "grayish-blue");
+      font-weight: 510;
+    }
+    & .name {
+      color: map-get($map: $colorsNeutral, $key: "dark-blue");
+    }
+    & img {
+      max-width: 35px;
+    }
+    & .tag-user {
+      background-color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+      color: map-get($map: $colorsNeutral, $key: "white");
+      padding: 1px 8px;
+    }
+  }
+  &-reply,
+  &-edit {
+    color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+  }
+  &-delete {
+    color: map-get($map: $colorsPrimary, $key: "soft-red");
+  }
+  &-reply,
+  &-edit,
+  &-delete {
+    font-size: 1.1rem;
+    &:hover {
+      opacity: 0.6;
+    }
+    & img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

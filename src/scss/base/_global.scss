@@ -1,0 +1,8 @@
+main {
+  align-items: center;
+  background-color: map-get($map: $colorsNeutral, $key: "light-gray");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
