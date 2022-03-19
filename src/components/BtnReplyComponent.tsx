@@ -1,6 +1,4 @@
-interface BtnReplyProps {}
-
-const BtnReplyComponent = ({}: BtnReplyProps) => {
+const BtnReplyComponent = () => {
   return (
     <div
       className="comment-reply d-flex align-items-center gap-3"

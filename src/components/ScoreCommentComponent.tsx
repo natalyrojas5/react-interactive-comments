@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+
 import { CommentsContext } from "../context/CommentsContext";
 import BtnReplyComponent from "./BtnReplyComponent";
 import BtnDeleteComponent from "./BtnDeleteComponent";
