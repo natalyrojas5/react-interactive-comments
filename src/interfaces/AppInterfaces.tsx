@@ -8,7 +8,7 @@ export interface User {
   username: string;
 }
 export interface Comment {
-  id: number;
+  id: number | string;
   content: string;
   createdAt: string;
   score: number;
@@ -21,7 +21,7 @@ export interface Reply extends Comment {
 }
 
 export interface Action {
-  commentId: number | null;
+  commentId: number | null | string;
   mood: null | "EDIT" | "DELETE" | "REPLY";
 }
 

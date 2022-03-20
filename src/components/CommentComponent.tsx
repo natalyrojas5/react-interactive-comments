@@ -13,6 +13,7 @@ interface CommentProps extends Comment {
 }
 
 const CommentComponent = ({
+  id,
   user: {
     username,
     image: { webp },
@@ -26,7 +27,7 @@ const CommentComponent = ({
 
   return (
     <div className="comment shadow-sm bg-white px-3 py-4">
-      <ScoreCommentComponent score={score} username={username} />
+      <ScoreCommentComponent score={score} username={username} commentId={id} />
       <div>
         <div className="d-flex justify-content-between mb-2">
           <UserCommentComponent
@@ -36,7 +37,7 @@ const CommentComponent = ({
           />
           {isCurrentUser ? (
             <div className="d-lg-flex align-items-center gap-3 d-none">
-              <BtnDeleteComponent />
+              <BtnDeleteComponent commentId={id} />
               <BtnEditComponent />
             </div>
           ) : (

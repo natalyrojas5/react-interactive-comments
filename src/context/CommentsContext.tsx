@@ -1,13 +1,13 @@
 import React, { createContext, useReducer } from "react";
-import { AppState, Comment } from "../interfaces/AppInterfaces";
+import { Action, AppState, Comment } from "../interfaces/AppInterfaces";
 import { CommentsReducers, state } from "./CommentsReducers";
 
 interface CommentsContextProps extends AppState {
-  updateActionComment: () => void;
+  updateActionComment: (action: Action) => void;
   updateStoreComment: () => void;
   addComment: (comment: Comment) => void;
   updateComment: () => void;
-  deleteComment: () => void;
+  deleteComment: (comment: Comment[]) => void;
 }
 
 export const CommentsContext = createContext({} as CommentsContextProps);
@@ -26,12 +26,12 @@ export const CommentsProvider = ({ children }: ProviderProps) => {
   const updateComment = () => {
     dispatch({ type: "UPDATE_COMMENT" });
   };
-  const updateActionComment = () => {
-    dispatch({ type: "UPDATE_ACTION_COMMENT" });
+  const updateActionComment = (action: Action) => {
+    dispatch({ type: "UPDATE_ACTION_COMMENT", payload: action });
   };
 
-  const deleteComment = () => {
-    dispatch({ type: "DELETE_COMMENT" });
+  const deleteComment = (currentComments: Comment[]) => {
+    dispatch({ type: "DELETE_COMMENT", payload: currentComments });
   };
   const updateStoreComment = () => {
     dispatch({ type: "UPDATE_STORE_COMMENT" });
