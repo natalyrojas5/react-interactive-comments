@@ -16,16 +16,16 @@ export const CommentsComponent = () => {
           comments.map((comment: Comments, index: number) => (
             <>
               <CommentComponent {...comment} />
-              {index === 0 && <ReplyCommentComponent btnText="Reply" />}
+              {/* {index === 0 && <ReplyCommentComponent btnText="Reply" />} */}
               {hasReplies(comment.replies) && (
                 <div className="replies my-4">
                   {Children.toArray(
                     comment.replies.map((c: Comment, index: number) => (
                       <>
                         <CommentComponent {...c} />
-                        {index === 0 && (
+                        {/* {index === 0 && (
                           <ReplyCommentComponent btnText="Reply" />
-                        )}
+                        )} */}
                       </>
                     ))
                   )}
