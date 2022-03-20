@@ -13,7 +13,7 @@ const UserCommentComponent = ({
 }: UserCommentProps) => {
   const { user } = useContext(CommentsContext);
   return (
-    <div className="comment-user d-flex align-items-center gap-3">
+    <div className="comment-user d-flex align-items-center gap-2">
       <img src={webp} alt={username} />
       <p className="name fw-bold">
         {username + " "}

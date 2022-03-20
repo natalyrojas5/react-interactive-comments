@@ -9,4 +9,23 @@ main {
     justify-content: flex-start;
     min-height: auto;
   }
+  p {
+    font-size: 1rem;
+  }
+}
+
+.scroll::-webkit-scrollbar {
+  background-color: map-get($colorsPrimary, "light-grayish-blue");
+  border-radius: 6px;
+  height: 5px;
+  width: 5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: map-get($colorsPrimary, "moderate-blue");
+  border-radius: 6px;
+}
+.scroll::-webkit-scrollbar-thumb:hover,
+.scroll::-webkit-scrollbar-thumb:active {
+  background-color: darken(map-get($colorsPrimary, "moderate-blue"), 5);
 }

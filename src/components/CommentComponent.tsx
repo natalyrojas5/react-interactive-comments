@@ -24,7 +24,7 @@ const CommentComponent = ({
     <div className="comment shadow-sm bg-white px-3 py-4">
       <ScoreCommentComponent score={score} username={username} />
       <div>
-        <div className="d-flex justify-content-between mb-3">
+        <div className="d-flex justify-content-between mb-2">
           <UserCommentComponent
             webp={webp}
             username={username}
@@ -42,8 +42,15 @@ const CommentComponent = ({
           )}
         </div>
         <div className="comment-user">
-          <p className="text lh-sm">{content}</p>
+          <textarea
+            className="w-100 scroll"
+            rows={3.8}
+            defaultValue={content}
+            placeholder="Add to comment"
+            disabled
+          />
         </div>
+        <button className="p-2 px-3 text-end d-block ms-auto">Update</button>
       </div>
     </div>
   );
