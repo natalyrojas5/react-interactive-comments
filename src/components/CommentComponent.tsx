@@ -8,6 +8,10 @@ import BtnReplyComponent from "./BtnReplyComponent";
 import ScoreCommentComponent from "./ScoreCommentComponent";
 import UserCommentComponent from "./UserCommentComponent";
 
+interface CommentProps extends Comment {
+  replyingTo?: string;
+}
+
 const CommentComponent = ({
   user: {
     username,
@@ -16,7 +20,7 @@ const CommentComponent = ({
   content,
   score,
   createdAt,
-}: Comment) => {
+}: CommentProps) => {
   const { user } = useContext(CommentsContext);
   const isCurrentUser = user.username === username;
 

@@ -33,15 +33,16 @@ export const CommentsComponent = () => {
   return (
     <div className="comments scroll">
       {Children.toArray(
-        comments.map((comment: Comment, index: number) => (
+        comments.map((comment: Comment) => (
           <>
             <CommentComponent {...comment} />
             {hasReplies(comment.replies) && (
               <div className="replies my-4">
                 {Children.toArray(
-                  comment.replies.map((reply: Reply, index: number) => (
+                  comment.replies.map((reply: Reply) => (
                     <>
-                      {/* <CommentComponent {...c} /> */}
+                      <CommentComponent {...reply} />
+                      {/* {JSON.stringify(reply, null, 3)} */}
                       {/* {index === 0 && (
                         <ReplyCommentComponent btnText="Reply" />
                       )} */}
