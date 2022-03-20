@@ -1,7 +1,7 @@
 const BtnReplyComponent = () => {
   return (
     <div
-      className="comment-reply d-flex align-items-center gap-3"
+      className="comment-reply d-flex align-items-center gap-2"
       role="button"
     >
       <img src="./images/icon-reply.svg" alt="Icon reply" />
