@@ -1,12 +1,18 @@
-import { useContext } from "react";
+import { LegacyRef, useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
 
 interface ReplyCommentProps {
   btnText: string;
   replyTo?: string;
+  action?: () => void;
+  currentText?: LegacyRef<HTMLTextAreaElement>;
 }
 
-const ReplyCommentComponent = ({ btnText }: ReplyCommentProps) => {
+const ReplyCommentComponent = ({
+  btnText,
+  action,
+  currentText,
+}: ReplyCommentProps) => {
   const {
     user: {
       username,
@@ -22,8 +28,11 @@ const ReplyCommentComponent = ({ btnText }: ReplyCommentProps) => {
         name="reply"
         rows={3}
         placeholder="Add to comment"
+        ref={currentText}
       />
-      <button className="p-2 px-4 ms-auto">{btnText}</button>
+      <button className="p-2 px-4 ms-auto" onClick={action}>
+        {btnText}
+      </button>
     </div>
   );
 };
