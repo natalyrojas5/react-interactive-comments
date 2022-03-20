@@ -7,7 +7,7 @@ export interface User {
   image: Images;
   username: string;
 }
-export interface Comment {
+export interface CommentProps {
   id: number;
   content: string;
   createdAt: string;
@@ -15,15 +15,20 @@ export interface Comment {
   user: User;
 }
 
-export interface Reply extends Comment {
+export interface Reply extends CommentProps {
   replyingTo: string;
 }
 
-export interface Comments extends Comment {
+export interface Comment extends CommentProps {
   replies: Reply[];
+}
+export interface Action {
+  commentId: number | null;
+  mood: null | "EDIT" | "DELETE" | "REPLY";
 }
 
 export interface AppState {
   user: User;
-  comments: Comments[];
+  comments: Comment[];
+  action: Action;
 }

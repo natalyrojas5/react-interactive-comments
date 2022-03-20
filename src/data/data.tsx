@@ -1,4 +1,4 @@
-import { Comments, User } from "../interfaces/AppInterfaces";
+import { Comment, User } from "../interfaces/AppInterfaces";
 
 export const user: User = {
   image: {
@@ -8,7 +8,7 @@ export const user: User = {
   username: "juliusomo",
 };
 
-export const comments: Comments[] = [
+export const comments: Comment[] = [
   {
     id: 1,
     content:
