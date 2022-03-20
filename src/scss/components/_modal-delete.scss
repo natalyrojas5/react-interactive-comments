@@ -1,0 +1,41 @@
+.ReactModal__Overlay {
+  background-color: rgba(map-get($colorsNeutral, "dark-blue"), 0.6) !important;
+}
+
+.ReactModal__Content {
+  border-radius: 8px !important;
+  border: 0px !important;
+  margin: auto;
+  max-width: 340px;
+  padding: 1.6rem !important;
+  outline: none;
+  width: 100%;
+  width: 100%;
+  z-index: 100;
+
+  & h2 {
+    color: map-get($colorsNeutral, "dark-blue") !important;
+  }
+
+  & p {
+    color: map-get($colorsNeutral, "grayish-blue") !important;
+  }
+  @media (max-width: 375.98px) {
+    max-width: 300px;
+    margin: auto 10px;
+    & h2,
+    & p {
+      text-align: center;
+    }
+  }
+  & button {
+    color: map-get($colorsNeutral, "white") !important;
+  }
+
+  & .btn-delete {
+    background-color: map-get($colorsPrimary, "soft-red");
+  }
+  & .btn-cancel {
+    background-color: map-get($colorsNeutral, "grayish-blue");
+  }
+}
