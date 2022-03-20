@@ -1,5 +1,5 @@
-import { Children, createRef, useContext, useRef } from "react";
-import moment from "moment";
+import { Children, createRef, useContext } from "react";
+
 import { CommentsContext } from "../context/CommentsContext";
 import { Comment, Reply } from "../interfaces/AppInterfaces";
 import { hasReplies } from "../utils/hasReplies";
@@ -20,7 +20,7 @@ export const CommentsComponent = () => {
       const newComment: Comment = {
         id: lastCommentId + 1,
         content,
-        createdAt: moment(new Date(), "YYYYMMDD").fromNow(),
+        createdAt: "a few seconds ago",
         user,
         replies: [],
         score: 0,
