@@ -23,7 +23,7 @@ const ReplyCommentComponent = ({ btnText }: ReplyCommentProps) => {
         rows={3}
         placeholder="Add to comment"
       />
-      <button className="p-2">{btnText}</button>
+      <button className="p-2 px-4 ms-auto">{btnText}</button>
     </div>
   );
 };

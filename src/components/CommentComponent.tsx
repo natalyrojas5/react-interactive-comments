@@ -50,7 +50,7 @@ const CommentComponent = ({
             disabled
           />
         </div>
-        <button className="p-2 px-3 text-end d-block ms-auto">Update</button>
+        {/* <button className="py-2 px-4 text-end d-block ms-auto">Update</button> */}
       </div>
     </div>
   );
