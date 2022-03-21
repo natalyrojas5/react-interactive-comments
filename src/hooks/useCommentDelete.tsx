@@ -6,16 +6,18 @@ const useCommentDelete = () => {
     action: { commentId },
     comments,
     updateActionComment,
+    deleteComment,
   } = useContext(CommentsContext);
 
   const delete_ = () => {
-    comments.forEach((c) => {
+    const currentComments = comments.filter((c) => {
       c.replies = c.replies.filter((c) => {
         c.replies = c.replies.filter((c) => c.id !== commentId);
         return c.id !== commentId;
       });
+      return c.id !== commentId;
     });
-
+    deleteComment(currentComments);
     cancelDelete();
   };
 

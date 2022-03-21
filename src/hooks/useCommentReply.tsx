@@ -33,6 +33,7 @@ const useCommentReply = () => {
           });
           if (reply.id === commentId) reply.replies.push(newReply);
         });
+        if (c.id === commentId) c.replies.push(newReply);
       });
 
       currentCommentReply.current.value = "";

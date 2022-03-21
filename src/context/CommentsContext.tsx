@@ -5,6 +5,7 @@ import { CommentsReducers, state } from "./CommentsReducers";
 interface CommentsContextProps extends AppState {
   updateActionComment: (action: Action) => void;
   addComment: (comment: Comment) => void;
+  deleteComment: (comment: Comment[]) => void;
 }
 
 export const CommentsContext = createContext({} as CommentsContextProps);
@@ -24,12 +25,17 @@ export const CommentsProvider = ({ children }: ProviderProps) => {
     dispatch({ type: "UPDATE_ACTION_COMMENT", payload: action });
   };
 
+  const deleteComment = (action: Comment[]) => {
+    dispatch({ type: "DELETE_COMMENT", payload: action });
+  };
+
   return (
     <CommentsContext.Provider
       value={{
         ...appState,
         addComment,
         updateActionComment,
+        deleteComment,
       }}
     >
       {children}
