@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
 import useComment from "../hooks/useComment";
 import { CommentProps } from "../interfaces/ComponentsInterfaces";
+import { evaluateReply } from "../utils/evaluateReply";
 
 import BtnDeleteComponent from "./BtnDeleteComponent";
 import BtnEditComponent from "./BtnEditComponent";
@@ -50,14 +51,20 @@ const CommentComponent = ({
           )}
         </div>
         <div className="comment-user">
-          <textarea
-            className="w-100 scroll"
-            rows={3.8}
-            defaultValue={content}
-            placeholder="Add to comment"
-            disabled={!isEditComment}
-            ref={updateCommentRef}
-          />
+          {isEditComment ? (
+            <textarea
+              className="w-100 scroll"
+              rows={3.8}
+              defaultValue={content}
+              placeholder="Add to comment"
+              disabled={!isEditComment}
+              ref={updateCommentRef}
+            />
+          ) : (
+            <p dangerouslySetInnerHTML={{ __html: evaluateReply(content) }}>
+              {}
+            </p>
+          )}
         </div>
         {isEditComment && (
           <button

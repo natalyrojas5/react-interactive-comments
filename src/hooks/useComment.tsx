@@ -7,8 +7,14 @@ import { ActionScore } from "../types/typesApp";
 
 const useComment = () => {
   const currentComment = createRef<HTMLTextAreaElement>();
-  const { user, addComment, comments, updateActionComment, action } =
-    useContext(CommentsContext);
+  const {
+    user,
+    addComment,
+    comments,
+    updateActionComment,
+    action,
+    updateComments,
+  } = useContext(CommentsContext);
 
   const createComment = () => {
     const content = currentComment.current?.value ?? "";
@@ -34,16 +40,18 @@ const useComment = () => {
     else if (action === "DECREASE") currentScore -= 1;
     if (currentScore < 0) return;
 
-    comments.forEach((c) => {
+    const currentComments = comments.map((c) => {
       c.replies = c.replies.map((reply) => {
         if (reply.id === commentId) reply.score = currentScore;
-        reply.replies.forEach((r) => {
+        reply.replies.map((r) => {
           if (r.id === commentId) r.score = currentScore;
         });
         return reply;
       });
       if (c.id === commentId) c.score = currentScore;
+      return c;
     });
+    updateComments(currentComments);
   };
 
   const updateCommentRef = createRef<HTMLTextAreaElement>();
