@@ -1,29 +1,15 @@
 import { useContext } from "react";
 import Modal from "react-modal";
 import { CommentsContext } from "../context/CommentsContext";
+import useCommentDelete from "../hooks/useCommentDelete";
 import customStyles from "../utils/customModalStyles";
 
 const ModalDelete = () => {
-  const { action, deleteComment, comments, updateActionComment } =
-    useContext(CommentsContext);
+  const { action } = useContext(CommentsContext);
+  const { delete_, cancelDelete } = useCommentDelete();
 
   Modal.setAppElement("#root");
 
-  const delete_ = () => {
-    const currentComments = comments.filter((c) => {
-      c.replies = c.replies.filter((c) => {
-        c.replies = c.replies.filter((c) => c.id !== action.commentId);
-        return c.id !== action.commentId;
-      });
-      return c.id !== action.commentId;
-    });
-    deleteComment(currentComments);
-    cancelDelete();
-  };
-
-  const cancelDelete = () => {
-    updateActionComment({ commentId: null, mood: null });
-  };
   return (
     <Modal
       isOpen={action.mood === "DELETE"}

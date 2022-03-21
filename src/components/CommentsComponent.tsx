@@ -1,74 +1,18 @@
-import { Children, createRef, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { Children, useContext } from "react";
 
 import { CommentsContext } from "../context/CommentsContext";
 import { Comment, Reply } from "../interfaces/AppInterfaces";
 import { hasReplies } from "../utils/hasReplies";
+import useComment from "../hooks/useComment";
 
 import CommentComponent from "./CommentComponent";
 import ReplyCommentComponent from "./ReplyCommentComponent";
+import useCommentReply from "../hooks/useCommentReply";
 
 export const CommentsComponent = () => {
-  const currentComment = createRef<HTMLTextAreaElement>();
-  const {
-    comments,
-    user,
-    action,
-    addComment,
-    updateComments,
-    updateActionComment,
-  } = useContext(CommentsContext);
-
-  const createComment = () => {
-    const content = currentComment.current?.value ?? "";
-
-    if (content.length > 0 && currentComment.current) {
-      const newComment: Comment = {
-        content,
-        id: uuidv4(),
-        createdAt: "a few seconds ago",
-        user,
-        replies: [],
-        score: 0,
-      };
-      currentComment.current.value = "";
-      addComment(newComment);
-    }
-  };
-
-  const currentCommentReply = createRef<HTMLTextAreaElement>();
-  const createCommentReply = () => {
-    const content = currentCommentReply.current?.value ?? "";
-
-    if (content.length > 0 && currentCommentReply.current) {
-      const newReply: Reply = {
-        content,
-        id: uuidv4(),
-        createdAt: "a few seconds ago",
-        user,
-        replyingTo: action.replyingTo ?? "",
-        replies: [],
-        score: 0,
-      };
-
-      const currentComments = comments.map((c) => {
-        c.replies = c.replies.map((reply) => {
-          debugger;
-          if (reply.id === action.commentId) reply.replies.push(newReply);
-          reply.replies.map((r) => {
-            if (r.id === action.commentId) r.replies.push(newReply);
-            return r;
-          });
-          return reply;
-        });
-        if (c.id === action.commentId) c.replies.push(newReply);
-        return c;
-      });
-      currentCommentReply.current.value = "";
-      updateComments(currentComments);
-      updateActionComment({ commentId: null, mood: null, replyingTo: "" });
-    }
-  };
+  const { createComment, currentComment } = useComment();
+  const { createCommentReply, currentCommentReply } = useCommentReply();
+  const { comments, action } = useContext(CommentsContext);
 
   return (
     <div className="comments scroll">
