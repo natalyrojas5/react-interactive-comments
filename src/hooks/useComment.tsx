@@ -43,8 +43,9 @@ const useComment = () => {
     const currentComments = comments.map((c) => {
       c.replies = c.replies.map((reply) => {
         if (reply.id === commentId) reply.score = currentScore;
-        reply.replies.map((r) => {
+        reply.replies = reply.replies.map((r) => {
           if (r.id === commentId) r.score = currentScore;
+          return r;
         });
         return reply;
       });
