@@ -2,18 +2,20 @@ import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
 
 const useCommentDelete = () => {
-  const { action, deleteComment, comments, updateActionComment } =
-    useContext(CommentsContext);
+  const {
+    action: { commentId },
+    comments,
+    updateActionComment,
+  } = useContext(CommentsContext);
 
   const delete_ = () => {
-    const currentComments = comments.filter((c) => {
+    comments.forEach((c) => {
       c.replies = c.replies.filter((c) => {
-        c.replies = c.replies.filter((c) => c.id !== action.commentId);
-        return c.id !== action.commentId;
+        c.replies = c.replies.filter((c) => c.id !== commentId);
+        return c.id !== commentId;
       });
-      return c.id !== action.commentId;
     });
-    deleteComment(currentComments);
+
     cancelDelete();
   };
 

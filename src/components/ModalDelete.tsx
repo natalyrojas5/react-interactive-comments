@@ -5,14 +5,16 @@ import useCommentDelete from "../hooks/useCommentDelete";
 import customStyles from "../utils/customModalStyles";
 
 const ModalDelete = () => {
-  const { action } = useContext(CommentsContext);
+  const {
+    action: { mood },
+  } = useContext(CommentsContext);
   const { delete_, cancelDelete } = useCommentDelete();
 
   Modal.setAppElement("#root");
 
   return (
     <Modal
-      isOpen={action.mood === "DELETE"}
+      isOpen={mood === "DELETE"}
       style={customStyles}
       contentLabel="Delete Modal"
     >

@@ -5,8 +5,12 @@ import { Reply } from "../interfaces/AppInterfaces";
 
 const useCommentReply = () => {
   const currentCommentReply = createRef<HTMLTextAreaElement>();
-  const { user, updateComments, updateActionComment, action, comments } =
-    useContext(CommentsContext);
+  const {
+    user,
+    updateActionComment,
+    action: { replyingTo, commentId },
+    comments,
+  } = useContext(CommentsContext);
 
   const createCommentReply = () => {
     const content = currentCommentReply.current?.value ?? "";
@@ -17,25 +21,21 @@ const useCommentReply = () => {
         id: uuidv4(),
         createdAt: "a few seconds ago",
         user,
-        replyingTo: action.replyingTo ?? "",
+        replyingTo: replyingTo ?? "",
         replies: [],
         score: 0,
       };
 
-      const currentComments = comments.map((c) => {
-        c.replies = c.replies.map((reply) => {
-          if (reply.id === action.commentId) reply.replies.push(newReply);
-          reply.replies.map((r) => {
-            if (r.id === action.commentId) r.replies.push(newReply);
-            return r;
+      comments.forEach((c) => {
+        c.replies.forEach((reply) => {
+          reply.replies.forEach((r) => {
+            if (r.id === commentId) r.replies.push(newReply);
           });
-          return reply;
+          if (reply.id === commentId) reply.replies.push(newReply);
         });
-        if (c.id === action.commentId) c.replies.push(newReply);
-        return c;
       });
+
       currentCommentReply.current.value = "";
-      updateComments(currentComments);
       updateActionComment({ commentId: null, mood: null, replyingTo: "" });
     }
   };
