@@ -4,12 +4,8 @@ import { CommentsContext } from "../context/CommentsContext";
 import BtnReplyComponent from "./BtnReplyComponent";
 import BtnDeleteComponent from "./BtnDeleteComponent";
 import BtnEditComponent from "./BtnEditComponent";
+import { ScoreCommentProps } from "../interfaces/ComponentsInterfaces";
 
-interface ScoreCommentProps {
-  score: number;
-  username: string;
-  commentId: number | string;
-}
 const ScoreCommentComponent = ({
   score,
   username,

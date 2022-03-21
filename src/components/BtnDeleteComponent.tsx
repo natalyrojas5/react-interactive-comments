@@ -1,11 +1,8 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
+import { ComponentSharedProps } from "../interfaces/ComponentsInterfaces";
 
-interface BtnDeleteProps {
-  commentId: number | string;
-}
-
-const BtnDeleteComponent = ({ commentId }: BtnDeleteProps) => {
+const BtnDeleteComponent = ({ commentId }: ComponentSharedProps) => {
   const { updateActionComment } = useContext(CommentsContext);
 
   const showDeleteModal = () => {

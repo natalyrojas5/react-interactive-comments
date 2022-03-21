@@ -1,16 +1,13 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
 import { Comment } from "../interfaces/AppInterfaces";
+import { CommentProps } from "../interfaces/ComponentsInterfaces";
 
 import BtnDeleteComponent from "./BtnDeleteComponent";
 import BtnEditComponent from "./BtnEditComponent";
 import BtnReplyComponent from "./BtnReplyComponent";
 import ScoreCommentComponent from "./ScoreCommentComponent";
 import UserCommentComponent from "./UserCommentComponent";
-
-interface CommentProps extends Comment {
-  replyingTo?: string;
-}
 
 const CommentComponent = ({
   id,

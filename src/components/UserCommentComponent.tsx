@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
-interface UserCommentProps {
-  webp: string;
-  username: string;
-  createdAt: string;
-}
+import { UserCommentProps } from "../interfaces/ComponentsInterfaces";
 
 const UserCommentComponent = ({
   webp,

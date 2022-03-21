@@ -1,12 +1,6 @@
-import { LegacyRef, useContext } from "react";
+import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
-
-interface ReplyCommentProps {
-  btnText: string;
-  replyTo?: string;
-  action?: () => void;
-  currentText?: LegacyRef<HTMLTextAreaElement>;
-}
+import { ReplyCommentProps } from "../interfaces/ComponentsInterfaces";
 
 const ReplyCommentComponent = ({
   btnText,

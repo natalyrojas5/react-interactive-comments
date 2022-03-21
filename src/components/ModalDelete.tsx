@@ -1,21 +1,12 @@
 import { useContext } from "react";
 import Modal from "react-modal";
 import { CommentsContext } from "../context/CommentsContext";
+import customStyles from "../utils/customModalStyles";
 
 const ModalDelete = () => {
   const { action, deleteComment, comments, updateActionComment } =
     useContext(CommentsContext);
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
 
-      transform: "translate(-50%, -50%)",
-    },
-  };
   Modal.setAppElement("#root");
 
   const delete_ = () => {
