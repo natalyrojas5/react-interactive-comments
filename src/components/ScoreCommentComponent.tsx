@@ -51,7 +51,7 @@ const ScoreCommentComponent = ({
       {user.username === username ? (
         <div className="d-flex align-items-center gap-3 d-lg-none">
           <BtnDeleteComponent commentId={commentId} />
-          <BtnEditComponent />
+          <BtnEditComponent commentId={commentId} />
         </div>
       ) : (
         <div className="d-lg-none d-block">

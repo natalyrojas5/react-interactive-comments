@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
+import useComment from "../hooks/useComment";
 import { CommentProps } from "../interfaces/ComponentsInterfaces";
 
 import BtnDeleteComponent from "./BtnDeleteComponent";
@@ -18,8 +19,14 @@ const CommentComponent = ({
   score,
   createdAt,
 }: CommentProps) => {
-  const { user } = useContext(CommentsContext);
+  const {
+    user,
+    action: { commentId, mood },
+  } = useContext(CommentsContext);
   const isCurrentUser = user.username === username;
+
+  const { updateCommentRef, updateComment } = useComment();
+  const isEditComment = commentId === id && mood === "EDIT";
 
   return (
     <div className="comment shadow-sm bg-white px-3 py-4">
@@ -34,7 +41,7 @@ const CommentComponent = ({
           {isCurrentUser ? (
             <div className="d-lg-flex align-items-center gap-3 d-none">
               <BtnDeleteComponent commentId={id} />
-              <BtnEditComponent />
+              <BtnEditComponent commentId={id} />
             </div>
           ) : (
             <div className="d-lg-block d-none">
@@ -48,10 +55,18 @@ const CommentComponent = ({
             rows={3.8}
             defaultValue={content}
             placeholder="Add to comment"
-            disabled
+            disabled={!isEditComment}
+            ref={updateCommentRef}
           />
         </div>
-        {/* <button className="py-2 px-4 text-end d-block ms-auto">Update</button> */}
+        {isEditComment && (
+          <button
+            className="py-2 px-4 text-end d-block ms-auto"
+            onClick={updateComment}
+          >
+            Update
+          </button>
+        )}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { ActionScore } from "../types/typesApp";
 
 const useComment = () => {
   const currentComment = createRef<HTMLTextAreaElement>();
-  const { user, addComment, comments, updateActionComment } =
+  const { user, addComment, comments, updateActionComment, action } =
     useContext(CommentsContext);
 
   const createComment = () => {
@@ -44,11 +44,33 @@ const useComment = () => {
       });
       if (c.id === commentId) c.score = currentScore;
     });
-
-    updateActionComment({ commentId: null, mood: null, replyingTo: "" });
   };
 
-  return { createComment, currentComment, updateCommentScore };
+  const updateCommentRef = createRef<HTMLTextAreaElement>();
+  const updateComment = () => {
+    const content = updateCommentRef.current?.value ?? "";
+    if (content.length > 0 && updateCommentRef.current) {
+      comments.forEach((c) => {
+        c.replies = c.replies.map((reply) => {
+          if (reply.id === action.commentId) reply.content = content;
+          reply.replies.forEach((r) => {
+            if (r.id === action.commentId) r.content = content;
+          });
+          return reply;
+        });
+        if (c.id === action.commentId) c.content = content;
+      });
+      updateActionComment({ commentId: null, mood: null, replyingTo: "" });
+    }
+  };
+
+  return {
+    createComment,
+    currentComment,
+    updateCommentScore,
+    updateCommentRef,
+    updateComment,
+  };
 };
 
 export default useComment;
