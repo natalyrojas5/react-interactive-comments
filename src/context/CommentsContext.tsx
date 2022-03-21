@@ -6,7 +6,7 @@ interface CommentsContextProps extends AppState {
   updateActionComment: (action: Action) => void;
   updateStoreComment: () => void;
   addComment: (comment: Comment) => void;
-  updateComment: () => void;
+  updateComments: (comment: Comment[]) => void;
   deleteComment: (comment: Comment[]) => void;
 }
 
@@ -23,8 +23,8 @@ export const CommentsProvider = ({ children }: ProviderProps) => {
     dispatch({ type: "ADD_COMMENT", payload: comment });
   };
 
-  const updateComment = () => {
-    dispatch({ type: "UPDATE_COMMENT" });
+  const updateComments = (currentComments: Comment[]) => {
+    dispatch({ type: "UPDATE_COMMENT", payload: currentComments });
   };
   const updateActionComment = (action: Action) => {
     dispatch({ type: "UPDATE_ACTION_COMMENT", payload: action });
@@ -44,7 +44,7 @@ export const CommentsProvider = ({ children }: ProviderProps) => {
         addComment,
         updateActionComment,
         deleteComment,
-        updateComment,
+        updateComments,
         updateStoreComment,
       }}
     >

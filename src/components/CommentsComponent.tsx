@@ -9,23 +9,64 @@ import CommentComponent from "./CommentComponent";
 import ReplyCommentComponent from "./ReplyCommentComponent";
 
 export const CommentsComponent = () => {
-  const currentComent = createRef<HTMLTextAreaElement>();
-  const { comments, user, addComment } = useContext(CommentsContext);
+  const currentComment = createRef<HTMLTextAreaElement>();
+  const {
+    comments,
+    user,
+    action,
+    addComment,
+    updateComments,
+    updateActionComment,
+  } = useContext(CommentsContext);
 
   const createComment = () => {
-    const content = currentComent.current?.value ?? "";
+    const content = currentComment.current?.value ?? "";
 
-    if (content.length > 0 && currentComent.current) {
+    if (content.length > 0 && currentComment.current) {
       const newComment: Comment = {
-        id: uuidv4(),
         content,
+        id: uuidv4(),
         createdAt: "a few seconds ago",
         user,
         replies: [],
         score: 0,
       };
-      currentComent.current.value = "";
+      currentComment.current.value = "";
       addComment(newComment);
+    }
+  };
+
+  const currentCommentReply = createRef<HTMLTextAreaElement>();
+  const createCommentReply = () => {
+    const content = currentCommentReply.current?.value ?? "";
+
+    if (content.length > 0 && currentCommentReply.current) {
+      const newReply: Reply = {
+        content,
+        id: uuidv4(),
+        createdAt: "a few seconds ago",
+        user,
+        replyingTo: action.replyingTo ?? "",
+        replies: [],
+        score: 0,
+      };
+
+      const currentComments = comments.map((c) => {
+        c.replies = c.replies.map((reply) => {
+          debugger;
+          if (reply.id === action.commentId) reply.replies.push(newReply);
+          reply.replies.map((r) => {
+            if (r.id === action.commentId) r.replies.push(newReply);
+            return r;
+          });
+          return reply;
+        });
+        if (c.id === action.commentId) c.replies.push(newReply);
+        return c;
+      });
+      currentCommentReply.current.value = "";
+      updateComments(currentComments);
+      updateActionComment({ commentId: null, mood: null, replyingTo: "" });
     }
   };
 
@@ -35,16 +76,36 @@ export const CommentsComponent = () => {
         comments.map((comment: Comment) => (
           <>
             <CommentComponent {...comment} />
+            {comment.id === action.commentId && action.mood === "REPLY" && (
+              <ReplyCommentComponent
+                btnText="Reply"
+                currentText={currentCommentReply}
+                action={createCommentReply}
+              />
+            )}
             {hasReplies(comment.replies) && (
               <div className="replies my-4">
                 {Children.toArray(
                   comment.replies.map((reply: Reply) => (
                     <>
                       <CommentComponent {...reply} />
-                      {/* {JSON.stringify(reply, null, 3)} */}
-                      {/* {index === 0 && (
-                        <ReplyCommentComponent btnText="Reply" />
-                      )} */}
+                      {reply.id === action.commentId &&
+                        action.mood === "REPLY" && (
+                          <ReplyCommentComponent
+                            btnText="Reply"
+                            currentText={currentCommentReply}
+                            action={createCommentReply}
+                          />
+                        )}
+                      {hasReplies(reply.replies) && (
+                        <div className="replies replies-2">
+                          {Children.toArray(
+                            reply.replies.map((reply2: Reply) => (
+                              <CommentComponent {...reply2} />
+                            ))
+                          )}
+                        </div>
+                      )}
                     </>
                   ))
                 )}
@@ -55,7 +116,7 @@ export const CommentsComponent = () => {
       )}
       <ReplyCommentComponent
         btnText="Send"
-        currentText={currentComent}
+        currentText={currentComment}
         action={createComment}
       />
     </div>

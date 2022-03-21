@@ -38,7 +38,7 @@ const CommentComponent = ({
             </div>
           ) : (
             <div className="d-lg-block d-none">
-              <BtnReplyComponent />
+              <BtnReplyComponent commentId={id} replyingTo={username} />
             </div>
           )}
         </div>

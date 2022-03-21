@@ -1,13 +1,6 @@
-import { Action, AppState, Comment } from "../interfaces/AppInterfaces";
+import { AppState } from "../interfaces/AppInterfaces";
 import { user, comments } from "../data/data";
-
-type CommentAction =
-  | { type: "UPDATE_ACTION_COMMENT"; payload: Action }
-  | { type: "UPDATE_STORE_COMMENT" }
-  | { type: "ADD_COMMENT"; payload: Comment }
-  | { type: "UPDATE_COMMENT" }
-  | { type: "REPLY_COMMENT" }
-  | { type: "DELETE_COMMENT"; payload: Comment[] };
+import { CommentAction } from "../types/typesApp";
 
 export const state: AppState = {
   user,
@@ -15,6 +8,7 @@ export const state: AppState = {
   action: {
     commentId: null,
     mood: null,
+    replyingTo: "",
   },
 };
 

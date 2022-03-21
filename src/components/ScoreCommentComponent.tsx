@@ -31,7 +31,7 @@ const ScoreCommentComponent = ({
         </div>
       ) : (
         <div className="d-lg-none d-block">
-          <BtnReplyComponent />
+          <BtnReplyComponent commentId={commentId} replyingTo={username} />
         </div>
       )}
     </div>

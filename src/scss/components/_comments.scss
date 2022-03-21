@@ -4,13 +4,20 @@
   overflow: auto;
   padding-right: 1rem;
   width: 100%;
-  & .replies {
+  & .replies,
+  &.replies-2 {
     border-left: 4px solid map-get($map: $colorsNeutral, $key: "light-gray");
-    margin-left: 2.5rem;
-    padding-left: 2.2rem;
+    margin-left: 2rem;
+    padding-left: 2rem;
     @media (max-width: 991.98px) {
       margin-left: 0.6rem;
       padding-left: 1.2rem;
+    }
+    &.replies-2 {
+      margin-left: 1.5rem;
+      @media (max-width: 991.98px) {
+        margin-left: 0.8rem;
+      }
     }
   }
   @media (max-width: 991.98px) {
