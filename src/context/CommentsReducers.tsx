@@ -25,13 +25,8 @@ export const CommentsReducers = (
           ...action.payload,
         },
       };
-    case "UPDATE_STORE_COMMENT":
-      return { ...state };
     case "ADD_COMMENT":
       return { ...state, comments: [...state.comments, action.payload] };
-    case "UPDATE_COMMENT":
-      debugger;
-      return { ...state };
     case "DELETE_COMMENT":
       return { ...state, comments: [...action.payload] };
     default:
