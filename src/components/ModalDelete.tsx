@@ -22,9 +22,9 @@ const ModalDelete = () => {
     const currentComments = comments.filter((c) => {
       c.replies = c.replies.filter((c) => {
         c.replies = c.replies.filter((c) => c.id !== action.commentId);
-        if (c.id !== action.commentId) return c;
+        return c.id !== action.commentId;
       });
-      if (c.id !== action.commentId) return c;
+      return c.id !== action.commentId;
     });
     deleteComment(currentComments);
     cancelDelete();
