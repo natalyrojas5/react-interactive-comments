@@ -10,7 +10,7 @@
   }
 
   &-score {
-    background-color: map-get($map: $colorsNeutral, $key: "very-light-gray");
+    background-color: map-get($colorsNeutral, "very-light-gray");
     border-radius: 14px;
     height: 100%;
     max-height: 115px;
@@ -23,26 +23,26 @@
       font-weight: 800;
     }
     &-action {
-      color: map-get($map: $colorsPrimary, $key: "light-grayish-blue");
+      color: map-get($colorsPrimary, "light-grayish-blue");
     }
     &-num {
-      color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+      color: map-get($colorsPrimary, "moderate-blue");
     }
   }
   &-user {
     & p {
-      color: map-get($map: $colorsNeutral, $key: "grayish-blue");
+      color: map-get($colorsNeutral, "grayish-blue");
       font-weight: 510;
     }
     & .name {
-      color: map-get($map: $colorsNeutral, $key: "dark-blue");
+      color: map-get($colorsNeutral, "dark-blue");
     }
     & img {
       max-width: 35px;
     }
     & .tag-user {
-      background-color: map-get($map: $colorsPrimary, $key: "moderate-blue");
-      color: map-get($map: $colorsNeutral, $key: "white");
+      background-color: map-get($colorsPrimary, "moderate-blue");
+      color: map-get($colorsNeutral, "white");
       padding: 1px 8px;
       @media (max-width: 575.98px) {
         padding-left: 5px;
@@ -53,10 +53,10 @@
 
   &-reply,
   &-edit {
-    color: map-get($map: $colorsPrimary, $key: "moderate-blue");
+    color: map-get($colorsPrimary, "moderate-blue");
   }
   &-delete {
-    color: map-get($map: $colorsPrimary, $key: "soft-red");
+    color: map-get($colorsPrimary, "soft-red");
   }
   &-reply,
   &-edit,

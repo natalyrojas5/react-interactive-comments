@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
-import useComment from "../hooks/useComment";
 import { CommentProps } from "../interfaces/ComponentsInterfaces";
 import { evaluateReply } from "../utils/evaluateReply";
+import useComment from "../hooks/useComment";
 
 import BtnDeleteComponent from "./BtnDeleteComponent";
 import BtnEditComponent from "./BtnEditComponent";
