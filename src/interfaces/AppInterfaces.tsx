@@ -23,6 +23,7 @@ export interface Reply extends Comment {
 export interface Action {
   commentId: number | null | string;
   mood: null | "EDIT" | "DELETE" | "REPLY";
+  replyingTo?: string;
 }
 
 export interface AppState {

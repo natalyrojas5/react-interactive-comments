@@ -26,3 +26,7 @@ export interface ReplyCommentProps {
 export interface CommentProps extends Comment {
   replyingTo?: string;
 }
+
+export interface BtnReplyProps extends ComponentSharedProps {
+  replyingTo?: string;
+}
