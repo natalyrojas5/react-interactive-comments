@@ -17,16 +17,16 @@ interface ProviderProps {
 export const CommentsProvider = ({ children }: ProviderProps) => {
   const [appState, dispatch] = useReducer(CommentsReducers, state);
 
-  const addComment = (comment: Comment) => {
-    dispatch({ type: "ADD_COMMENT", payload: comment });
+  const addComment = (payload: Comment) => {
+    dispatch({ type: "ADD_COMMENT", payload });
   };
 
-  const updateActionComment = (action: Action) => {
-    dispatch({ type: "UPDATE_ACTION_COMMENT", payload: action });
+  const updateActionComment = (payload: Action) => {
+    dispatch({ type: "UPDATE_ACTION_COMMENT", payload });
   };
 
-  const deleteComment = (action: Comment[]) => {
-    dispatch({ type: "DELETE_COMMENT", payload: action });
+  const deleteComment = (payload: Comment[]) => {
+    dispatch({ type: "DELETE_COMMENT", payload });
   };
 
   return (
