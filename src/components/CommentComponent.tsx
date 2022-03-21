@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CommentsContext } from "../context/CommentsContext";
-import { Comment } from "../interfaces/AppInterfaces";
 import { CommentProps } from "../interfaces/ComponentsInterfaces";
 
 import BtnDeleteComponent from "./BtnDeleteComponent";
