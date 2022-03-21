@@ -3,10 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 
 import { CommentsContext } from "../context/CommentsContext";
 import { Comment } from "../interfaces/AppInterfaces";
+import { ActionScore } from "../types/typesApp";
 
 const useComment = () => {
   const currentComment = createRef<HTMLTextAreaElement>();
-  const { user, addComment } = useContext(CommentsContext);
+  const { user, addComment, comments, updateComments, updateActionComment } =
+    useContext(CommentsContext);
 
   const createComment = () => {
     const content = currentComment.current?.value ?? "";
@@ -25,7 +27,31 @@ const useComment = () => {
     }
   };
 
-  return { createComment, currentComment };
+  const updateCommentScore = ({ action, score, commentId }: ActionScore) => {
+    let currentScore = score;
+
+    if (action === "INCREASE") currentScore += 1;
+    else if (action === "DECREASE") currentScore -= 1;
+    if (currentScore < 0) return;
+
+    const currentComments = comments.map((c) => {
+      c.replies = c.replies.map((reply) => {
+        if (reply.id === commentId) reply.score = currentScore;
+        reply.replies.map((r) => {
+          if (r.id === commentId) r.score = currentScore;
+          return r;
+        });
+
+        return reply;
+      });
+      if (c.id === commentId) c.score = currentScore;
+      return c;
+    });
+    updateComments(currentComments);
+    updateActionComment({ commentId: null, mood: null, replyingTo: "" });
+  };
+
+  return { createComment, currentComment, updateCommentScore };
 };
 
 export default useComment;

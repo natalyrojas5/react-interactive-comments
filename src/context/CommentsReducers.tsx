@@ -31,8 +31,6 @@ export const CommentsReducers = (
       return { ...state, comments: [...state.comments, action.payload] };
     case "UPDATE_COMMENT":
       return { ...state };
-    case "REPLY_COMMENT":
-      return { ...state };
     case "DELETE_COMMENT":
       return { ...state, comments: [...action.payload] };
     default:
