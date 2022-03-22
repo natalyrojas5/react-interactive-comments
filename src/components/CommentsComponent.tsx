@@ -1,13 +1,12 @@
 import { Children, useContext } from "react";
 
-import { CommentsContext } from "../context/CommentsContext";
-import { Comment, Reply } from "../interfaces/AppInterfaces";
-import { hasReplies } from "../utils/hasReplies";
-import useComment from "../hooks/useComment";
+import { CommentsContext } from "context/CommentsContext";
+import { Comment, Reply } from "interfaces/AppInterfaces";
+import useComment from "hooks/useComment";
+import useCommentReply from "hooks/useCommentReply";
+import { hasReplies } from "utils/hasReplies";
 
-import CommentComponent from "./forms/CommentComponent";
-import ReplyOrCommentComponent from "./forms/ReplyOrCommentComponent";
-import useCommentReply from "../hooks/useCommentReply";
+import { CommentComponent, ReplyOrCommentComponent } from "./forms";
 
 const CommentsComponent = () => {
   const { createComment, currentComment } = useComment();

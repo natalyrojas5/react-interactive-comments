@@ -1,12 +1,14 @@
 import { useContext } from "react";
 
-import { CommentsContext } from "../../../context/CommentsContext";
-import { ScoreCommentProps } from "../../../interfaces/ComponentsInterfaces";
-import useComment from "../../../hooks/useComment";
+import { CommentsContext } from "context/CommentsContext";
+import { ScoreCommentProps } from "interfaces/ComponentsInterfaces";
+import useComment from "hooks/useComment";
 
-import BtnReplyComponent from "../../buttons/BtnReplyComponent";
-import BtnDeleteComponent from "../../buttons/BtnDeleteComponent";
-import BtnEditComponent from "../../buttons/BtnEditComponent";
+import {
+  BtnDeleteComponent,
+  BtnEditComponent,
+  BtnReplyComponent,
+} from "components/buttons";
 
 const ScoreCommentComponent = ({
   score,

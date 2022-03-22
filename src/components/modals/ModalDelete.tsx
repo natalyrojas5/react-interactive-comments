@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import Modal from "react-modal";
 
-import { CommentsContext } from "../../context/CommentsContext";
-import useCommentDelete from "../../hooks/useCommentDelete";
-import customStyles from "../../utils/customModalStyles";
+import { CommentsContext } from "context/CommentsContext";
+import useCommentDelete from "hooks/useCommentDelete";
+import customStyles from "utils/customModalStyles";
 
 const ModalDelete = () => {
   const {

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CommentsContext } from "../context/CommentsContext";
+import { CommentsContext } from "context/CommentsContext";
 
 const useCommentDelete = () => {
   const {

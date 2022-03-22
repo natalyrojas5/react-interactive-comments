@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CommentsContext } from "../../context/CommentsContext";
-import { ReplyCommentProps } from "../../interfaces/ComponentsInterfaces";
+import { CommentsContext } from "context/CommentsContext";
+import { ReplyCommentProps } from "interfaces/ComponentsInterfaces";
 
 const ReplyOrCommentComponent = ({
   btnText,

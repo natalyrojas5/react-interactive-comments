@@ -1,7 +1,7 @@
 import { createRef, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { CommentsContext } from "../context/CommentsContext";
-import { Reply } from "../interfaces/AppInterfaces";
+import { CommentsContext } from "context/CommentsContext";
+import { Reply } from "interfaces/AppInterfaces";
 
 const useCommentReply = () => {
   const currentCommentReply = createRef<HTMLTextAreaElement>();

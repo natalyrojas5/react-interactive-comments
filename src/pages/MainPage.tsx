@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { CommentsContext } from "../context/CommentsContext";
-import CommentsComponent from "../components/CommentsComponent";
-import ModalDelete from "../components/modals/ModalDelete";
+import { CommentsContext } from "context/CommentsContext";
+import CommentsComponent from "components/CommentsComponent";
+import ModalDelete from "components/modals/ModalDelete";
 
 const MainPage = () => {
   const { comments } = useContext(CommentsContext);

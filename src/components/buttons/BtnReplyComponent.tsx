@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CommentsContext } from "../../context/CommentsContext";
-import { BtnReplyProps } from "../../interfaces/ComponentsInterfaces";
+import { CommentsContext } from "context/CommentsContext";
+import { BtnReplyProps } from "interfaces/ComponentsInterfaces";
 
 const BtnReplyComponent = ({ commentId, replyingTo }: BtnReplyProps) => {
   const { updateActionComment } = useContext(CommentsContext);

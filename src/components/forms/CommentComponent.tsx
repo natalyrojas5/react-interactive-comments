@@ -1,14 +1,16 @@
 import { useContext } from "react";
-import { CommentsContext } from "../../context/CommentsContext";
-import { CommentProps } from "../../interfaces/ComponentsInterfaces";
-import { evaluateReply } from "../../utils/evaluateReply";
-import useComment from "../../hooks/useComment";
+import { CommentsContext } from "context/CommentsContext";
+import { CommentProps } from "interfaces/ComponentsInterfaces";
+import { evaluateReply } from "utils/evaluateReply";
+import useComment from "hooks/useComment";
 
-import BtnDeleteComponent from "../buttons/BtnDeleteComponent";
-import BtnEditComponent from "../buttons/BtnEditComponent";
-import BtnReplyComponent from "../buttons/BtnReplyComponent";
-import ScoreCommentComponent from "./comment-atoms/ScoreCommentComponent";
-import UserCommentComponent from "./comment-atoms/UserCommentComponent";
+import {
+  BtnDeleteComponent,
+  BtnEditComponent,
+  BtnReplyComponent,
+} from "components/buttons";
+
+import { ScoreCommentComponent, UserCommentComponent } from "./comment-atoms";
 
 const CommentComponent = ({
   id,

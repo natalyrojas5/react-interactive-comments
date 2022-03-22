@@ -1,6 +1,6 @@
-import { AppState } from "../interfaces/AppInterfaces";
-import { user, comments } from "../data/data";
-import { CommentAction } from "../types/typesApp";
+import { AppState } from "interfaces/AppInterfaces";
+import { user, comments } from "data";
+import { CommentAction } from "types/typesApp";
 
 export const state: AppState = {
   user,

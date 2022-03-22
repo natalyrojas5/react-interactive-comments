@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CommentsContext } from "../../context/CommentsContext";
-import { ComponentSharedProps } from "../../interfaces/ComponentsInterfaces";
+import { CommentsContext } from "context/CommentsContext";
+import { ComponentSharedProps } from "interfaces/ComponentsInterfaces";
 
 const BtnEditComponent = ({ commentId }: ComponentSharedProps) => {
   const { updateActionComment } = useContext(CommentsContext);

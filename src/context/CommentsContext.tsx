@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from "react";
-import { Action, AppState, Comment } from "../interfaces/AppInterfaces";
+import { Action, AppState, Comment } from "interfaces/AppInterfaces";
 import { CommentsReducers, state } from "./CommentsReducers";
 
 interface CommentsContextProps extends AppState {
