@@ -15,7 +15,7 @@ function App() {
       <main>
         <MainPage />
       </main>
-      <footer className="mb-3">
+      <footer className="mb-3 px-5 text-center">
         <h1>
           Challenge by{" "}
           <span role="button" onClick={goFrontendMentor}>
