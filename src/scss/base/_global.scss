@@ -1,18 +1,29 @@
-main {
-  align-items: center;
+.app-nat {
   background-color: map-get($colorsNeutral, "very-light-gray");
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
   min-height: 100vh;
   @media (max-width: 767.98px) {
     justify-content: flex-start;
     min-height: auto;
+    gap: 0;
   }
   p {
     font-size: 1rem;
     @media (max-width: 575.98px) {
       font-size: 0.8rem;
+    }
+  }
+  footer p {
+    font-weight: 600;
+    color: map-get($colorsNeutral, "grayish-blue");
+    font-size: 1rem;
+
+    & span {
+      color: map-get($colorsPrimary, "moderate-blue");
     }
   }
 }
