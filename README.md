@@ -2,7 +2,7 @@
 
 ## This project is based on one of the [Frontend Mentor](https://www.frontendmentor.io/) challenges.
 
-![Interactive comments](./screenshot.png)
+![Interactive comments](./screenshot-1.png)
 
 ### [Interactive comments section challenge hub](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9)
 
