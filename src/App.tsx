@@ -16,7 +16,7 @@ function App() {
         <MainPage />
       </main>
       <footer className="mb-3">
-        <p>
+        <h1>
           Challenge by{" "}
           <span role="button" onClick={goFrontendMentor}>
             Frontend Mentor.
@@ -25,7 +25,7 @@ function App() {
           <span role="button" onClick={goMyProfile}>
             Nataly Rojas.
           </span>
-        </p>
+        </h1>
       </footer>
     </CommentsProvider>
   );
