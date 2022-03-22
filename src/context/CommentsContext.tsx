@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { Action, AppState, Comment } from "../interfaces/AppInterfaces";
 import { CommentsReducers, state } from "./CommentsReducers";
 
@@ -15,8 +15,20 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
+const init = () => {
+  const initialState = { ...state };
+  const commentLS = JSON.parse(localStorage.getItem("comments") || "");
+  if (commentLS) initialState.comments = commentLS;
+
+  return initialState;
+};
+
 export const CommentsProvider = ({ children }: ProviderProps) => {
-  const [appState, dispatch] = useReducer(CommentsReducers, state);
+  const [appState, dispatch] = useReducer(CommentsReducers, state, init);
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(appState.comments));
+  }, [appState]);
 
   const addComment = (payload: Comment) => {
     dispatch({ type: "ADD_COMMENT", payload });
