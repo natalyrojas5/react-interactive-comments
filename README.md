@@ -22,3 +22,4 @@
 
 - React + Typescript
 - Context + Redux
+- Scss
