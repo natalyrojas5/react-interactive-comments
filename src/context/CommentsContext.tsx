@@ -17,7 +17,7 @@ interface ProviderProps {
 
 const init = () => {
   const initialState = { ...state };
-  const commentLS = JSON.parse(localStorage.getItem("comments") || "");
+  const commentLS = JSON.parse(localStorage?.getItem("comments") || "");
   if (Array.isArray(commentLS) && commentLS.length > 0)
     initialState.comments = commentLS;
 
