@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { CommentsContext } from "../context/CommentsContext";
-import { CommentProps } from "../interfaces/ComponentsInterfaces";
-import { evaluateReply } from "../utils/evaluateReply";
-import useComment from "../hooks/useComment";
+import { CommentsContext } from "../../context/CommentsContext";
+import { CommentProps } from "../../interfaces/ComponentsInterfaces";
+import { evaluateReply } from "../../utils/evaluateReply";
+import useComment from "../../hooks/useComment";
 
-import BtnDeleteComponent from "./BtnDeleteComponent";
-import BtnEditComponent from "./BtnEditComponent";
-import BtnReplyComponent from "./BtnReplyComponent";
-import ScoreCommentComponent from "./ScoreCommentComponent";
-import UserCommentComponent from "./UserCommentComponent";
+import BtnDeleteComponent from "../buttons/BtnDeleteComponent";
+import BtnEditComponent from "../buttons/BtnEditComponent";
+import BtnReplyComponent from "../buttons/BtnReplyComponent";
+import ScoreCommentComponent from "./comment-atoms/ScoreCommentComponent";
+import UserCommentComponent from "./comment-atoms/UserCommentComponent";
 
 const CommentComponent = ({
   id,
@@ -30,7 +30,7 @@ const CommentComponent = ({
   const isEditComment = commentId === id && mood === "EDIT";
 
   return (
-    <div className="comment shadow-sm bg-white px-3 py-4">
+    <div className="comment  bg-white px-3 py-4">
       <ScoreCommentComponent score={score} username={username} commentId={id} />
       <div>
         <div className="d-flex justify-content-between mb-2">

@@ -24,6 +24,9 @@
 
     & span {
       color: map-get($colorsPrimary, "moderate-blue");
+      &:hover {
+        color: darken(map-get($colorsPrimary, "moderate-blue"), $amount: 8);
+      }
     }
   }
 }

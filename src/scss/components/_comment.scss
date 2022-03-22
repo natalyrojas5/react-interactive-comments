@@ -24,6 +24,9 @@
     }
     &-action {
       color: map-get($colorsPrimary, "light-grayish-blue");
+      &:hover {
+        color: map-get($colorsPrimary, "moderate-blue");
+      }
     }
     &-num {
       color: map-get($colorsPrimary, "moderate-blue");

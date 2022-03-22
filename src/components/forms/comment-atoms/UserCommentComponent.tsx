@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CommentsContext } from "../context/CommentsContext";
-import { UserCommentProps } from "../interfaces/ComponentsInterfaces";
+import { CommentsContext } from "../../../context/CommentsContext";
+import { UserCommentProps } from "../../../interfaces/ComponentsInterfaces";
 
 const UserCommentComponent = ({
   webp,

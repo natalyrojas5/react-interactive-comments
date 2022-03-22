@@ -33,7 +33,7 @@
 }
 
 textarea {
-  border-color: map-get($colorsPrimary, "moderate-blue");
+  border-color: map-get($colorsNeutral, "light-gray");
   color: map-get($colorsNeutral, "dark-blue");
   font-weight: 600;
   padding: 6px;
@@ -45,6 +45,10 @@ textarea {
     @media (max-width: 991.98px) {
       padding-right: 6px;
     }
+  }
+  &:hover,
+  &:focus {
+    border-color: map-get($colorsPrimary, "moderate-blue");
   }
 }
 

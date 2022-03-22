@@ -5,11 +5,11 @@ import { Comment, Reply } from "../interfaces/AppInterfaces";
 import { hasReplies } from "../utils/hasReplies";
 import useComment from "../hooks/useComment";
 
-import CommentComponent from "./CommentComponent";
-import ReplyCommentComponent from "./ReplyCommentComponent";
+import CommentComponent from "./forms/CommentComponent";
+import ReplyOrCommentComponent from "./forms/ReplyOrCommentComponent";
 import useCommentReply from "../hooks/useCommentReply";
 
-export const CommentsComponent = () => {
+const CommentsComponent = () => {
   const { createComment, currentComment } = useComment();
   const { createCommentReply, currentCommentReply } = useCommentReply();
   const { comments, action } = useContext(CommentsContext);
@@ -21,7 +21,7 @@ export const CommentsComponent = () => {
           <>
             <CommentComponent {...comment} />
             {comment.id === action.commentId && action.mood === "REPLY" && (
-              <ReplyCommentComponent
+              <ReplyOrCommentComponent
                 btnText="Reply"
                 currentText={currentCommentReply}
                 action={createCommentReply}
@@ -35,7 +35,7 @@ export const CommentsComponent = () => {
                       <CommentComponent {...reply} />
                       {reply.id === action.commentId &&
                         action.mood === "REPLY" && (
-                          <ReplyCommentComponent
+                          <ReplyOrCommentComponent
                             btnText="Reply"
                             currentText={currentCommentReply}
                             action={createCommentReply}
@@ -58,7 +58,7 @@ export const CommentsComponent = () => {
           </>
         ))
       )}
-      <ReplyCommentComponent
+      <ReplyOrCommentComponent
         btnText="Send"
         currentText={currentComment}
         action={createComment}
@@ -66,3 +66,4 @@ export const CommentsComponent = () => {
     </div>
   );
 };
+export default CommentsComponent;
