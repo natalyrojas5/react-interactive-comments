@@ -1,12 +1,12 @@
 .comments {
-  max-width: 750px;
+  max-width: 51.25rem;
   max-height: 85vh;
   overflow: auto;
   padding-right: 1rem;
   width: 100%;
   & .replies,
   &.replies-2 {
-    border-left: 4px solid map-get($colorsNeutral, "light-gray");
+    border-left: 0.25rem solid map-get($colorsNeutral, "light-gray");
     margin-left: 2rem;
     padding-left: 2rem;
     @media (max-width: 991.98px) {
@@ -28,7 +28,7 @@
 
 .comment,
 .comment-box-reply {
-  border-radius: 10px;
+  border-radius: 0.625rem;
   gap: 1.4rem;
 }
 
@@ -36,14 +36,14 @@ textarea {
   border-color: map-get($colorsNeutral, "light-gray");
   color: map-get($colorsNeutral, "dark-blue");
   font-weight: 600;
-  padding: 6px;
+  padding: 0.375rem;
   resize: none;
   &:disabled {
     background-color: transparent;
-    border: 0px;
-    padding: 0px;
+    border: 0;
+    padding: 0;
     @media (max-width: 991.98px) {
-      padding-right: 6px;
+      padding-right: 0.375rem;
     }
   }
   &:hover,
@@ -54,13 +54,13 @@ textarea {
 
 textarea,
 button {
-  outline: 0px;
-  border-radius: 6px;
+  outline: 0;
+  border-radius: 0.375rem;
 }
 
 button {
   background-color: map-get($colorsPrimary, "moderate-blue");
-  border: 0px;
+  border: 0;
   color: map-get($colorsNeutral, "white");
   font-weight: 700;
   outline: 0;

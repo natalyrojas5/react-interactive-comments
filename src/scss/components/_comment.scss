@@ -11,12 +11,12 @@
 
   &-score {
     background-color: map-get($colorsNeutral, "very-light-gray");
-    border-radius: 14px;
+    border-radius: 0.313rem;
     height: 100%;
-    max-height: 115px;
+    max-height: 7.188rem;
     @media (max-width: 991.98px) {
-      max-width: 115px;
-      padding: 4px 12px;
+      max-width: 7.188rem;
+      padding: 0.25rem 0.75rem;
     }
     & p {
       font-size: 1.2rem;
@@ -26,6 +26,11 @@
       color: map-get($colorsPrimary, "light-grayish-blue");
       &:hover {
         color: map-get($colorsPrimary, "moderate-blue");
+      }
+      &.disabled {
+        color: map-get($colorsPrimary, "soft-red");
+        opacity: 0.3;
+        cursor: no-drop;
       }
     }
     &-num {
@@ -41,15 +46,15 @@
       color: map-get($colorsNeutral, "dark-blue");
     }
     & img {
-      max-width: 35px;
+      max-width: 2.188rem;
     }
     & .tag-user {
       background-color: map-get($colorsPrimary, "moderate-blue");
       color: map-get($colorsNeutral, "white");
-      padding: 1px 8px;
+      padding: 0.063rem 0.5rem;
       @media (max-width: 575.98px) {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 0.313rem;
+        padding-right: 0.313rem;
       }
     }
   }
@@ -69,8 +74,8 @@
       opacity: 0.6;
     }
     & img {
-      height: 16px;
-      width: 16px;
+      height: 1rem;
+      width: 1rem;
     }
   }
 }
