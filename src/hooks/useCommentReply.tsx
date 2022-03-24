@@ -24,6 +24,7 @@ const useCommentReply = () => {
         replyingTo: replyingTo ?? "",
         replies: [],
         score: 0,
+        initialScore: 0,
       };
 
       comments.forEach((c) => {

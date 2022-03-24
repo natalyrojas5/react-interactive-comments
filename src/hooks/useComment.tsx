@@ -27,17 +27,27 @@ const useComment = () => {
         user,
         replies: [],
         score: 0,
+        initialScore: 0,
       };
       currentComment.current.value = "";
       addComment(newComment);
     }
   };
 
-  const updateCommentScore = ({ action, score, commentId }: ActionScore) => {
+  const updateCommentScore = ({
+    action,
+    score,
+    commentId,
+    initialScore,
+  }: ActionScore) => {
     let currentScore = score;
 
-    if (action === "INCREASE") currentScore += 1;
-    else if (action === "DECREASE") currentScore -= 1;
+    const isIncrement = action === "INCREASE";
+    const isDecrease = action === "DECREASE";
+
+    if (score !== initialScore) return;
+    if (isIncrement) currentScore = initialScore + 1;
+    else if (isDecrease) currentScore = initialScore - 1;
     if (currentScore < 0) return;
 
     const currentComments = comments.map((c) => {

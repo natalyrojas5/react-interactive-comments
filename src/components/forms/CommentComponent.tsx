@@ -21,6 +21,7 @@ const CommentComponent = ({
   content,
   score,
   createdAt,
+  initialScore,
 }: CommentProps) => {
   const {
     user,
@@ -33,7 +34,12 @@ const CommentComponent = ({
 
   return (
     <div className="comment  bg-white px-3 py-4">
-      <ScoreCommentComponent score={score} username={username} commentId={id} />
+      <ScoreCommentComponent
+        score={score}
+        username={username}
+        commentId={id}
+        initialScore={initialScore}
+      />
       <div>
         <div className="d-flex justify-content-between mb-2">
           <UserCommentComponent
@@ -63,9 +69,7 @@ const CommentComponent = ({
               ref={updateCommentRef}
             />
           ) : (
-            <p dangerouslySetInnerHTML={{ __html: evaluateReply(content) }}>
-              {}
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: evaluateReply(content) }}></p>
           )}
         </div>
         {isEditComment && (

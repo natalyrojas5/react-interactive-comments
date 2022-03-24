@@ -12,6 +12,7 @@ export interface Comment {
   content: string;
   createdAt: string;
   score: number;
+  initialScore: number;
   user: User;
   replies: Reply[];
 }

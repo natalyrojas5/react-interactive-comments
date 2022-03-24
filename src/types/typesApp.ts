@@ -8,4 +8,4 @@ export
   | { type: "UPDATE_COMMENTS"; payload: Comment[] };
 
 
-export type ActionScore = { action: 'INCREASE' | 'DECREASE', score: number, commentId: number | string };
+export type ActionScore = { action: 'INCREASE' | 'DECREASE', score: number, commentId: number | string, initialScore: number };

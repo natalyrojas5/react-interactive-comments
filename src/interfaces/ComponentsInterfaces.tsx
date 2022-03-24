@@ -14,6 +14,7 @@ export interface UserCommentProps {
 export interface ScoreCommentProps extends ComponentSharedProps {
   score: number;
   username: string;
+  initialScore: number;
 }
 
 export interface ReplyCommentProps {

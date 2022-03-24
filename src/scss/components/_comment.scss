@@ -28,9 +28,10 @@
         color: map-get($colorsPrimary, "moderate-blue");
       }
       &.disabled {
-        color: map-get($colorsPrimary, "soft-red");
-        opacity: 0.3;
         cursor: no-drop;
+        &:hover {
+          color: map-get($colorsPrimary, "light-grayish-blue");
+        }
       }
     }
     &-num {
