@@ -15,9 +15,9 @@ const useCommentReply = () => {
   const createCommentReply = () => {
     const content = currentCommentReply.current?.value ?? "";
 
-    if (content.length > 0 && currentCommentReply.current) {
+    if (content.trim().length > 0 && currentCommentReply.current) {
       const newReply: Reply = {
-        content,
+        content: content.trim(),
         id: uuidv4(),
         createdAt: "a few seconds ago",
         user,

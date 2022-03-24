@@ -65,7 +65,8 @@ button {
   font-weight: 700;
   outline: 0;
   text-transform: uppercase;
-  &:hover {
+  &:hover,
+  &:disabled {
     opacity: 0.6;
   }
 }

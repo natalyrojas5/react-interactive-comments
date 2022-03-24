@@ -19,9 +19,9 @@ const useComment = () => {
   const createComment = () => {
     const content = currentComment.current?.value ?? "";
 
-    if (content.length > 0 && currentComment.current) {
+    if (content.trim().length > 0 && currentComment.current) {
       const newComment: Comment = {
-        content,
+        content: content.trim(),
         id: uuidv4(),
         createdAt: "a few seconds ago",
         user,
@@ -68,16 +68,17 @@ const useComment = () => {
   const updateCommentRef = createRef<HTMLTextAreaElement>();
   const updateComment = () => {
     const content = updateCommentRef.current?.value ?? "";
-    if (content.length > 0 && updateCommentRef.current) {
+
+    if (content.trim().length > 0 && updateCommentRef.current) {
       comments.forEach((c) => {
         c.replies = c.replies.map((reply) => {
-          if (reply.id === action.commentId) reply.content = content;
+          if (reply.id === action.commentId) reply.content = content.trim();
           reply.replies.forEach((r) => {
-            if (r.id === action.commentId) r.content = content;
+            if (r.id === action.commentId) r.content = content.trim();
           });
           return reply;
         });
-        if (c.id === action.commentId) c.content = content;
+        if (c.id === action.commentId) c.content = content.trim();
       });
       updateActionComment({ commentId: null, mood: null, replyingTo: "" });
     }
